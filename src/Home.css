@@ -48,3 +48,39 @@
 .add-button:hover {
     background-color: #84F55C;
 }
+
+.input-order {
+    text-align: center;
+    border: none;
+    background-color: #CDECC2;
+    font-size: 20px;
+    outline: none;
+}
+
+.input-order:hover {
+    background-color: #84F55C;
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button {  
+   opacity: 1;
+}
+
+.edit-button {
+    float: right;
+    padding-top: 5px;
+    padding-right: 7px;
+    outline: none;
+}
+
+.edit-button-title {
+    width: 71%;
+}
+
+.tick {
+    width: 5%;
+}
+
+.cross {
+    width: 4%;
+}

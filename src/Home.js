@@ -41,7 +41,6 @@ class Home extends Component {
     }
 
     authenticate = (email, password) => {
-        console.log(this.state);
         let isAuthenticated = false;
         if (email) {
             userData.forEach((user) => {
@@ -57,7 +56,6 @@ class Home extends Component {
 
 
     render() {
-        console.log(this.state);
         return (
             <div className="Home">
                 <Header />

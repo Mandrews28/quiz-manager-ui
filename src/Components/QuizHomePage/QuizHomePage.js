@@ -6,8 +6,8 @@ class QuizHomePage extends Component {
         super();
 
         this.state = {
-            quizList: null,
             permissions: null,
+            quizList: null,
             quizzes: [],
             selectedQuiz: null
         }
