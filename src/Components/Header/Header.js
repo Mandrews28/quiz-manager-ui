@@ -2,14 +2,8 @@ import React, { Component } from 'react';
 import './Header.css';
 
 class Header extends Component {
-    onSignOut = (event) => {
-        event.preventDefault();
-        document.getElementById("App Sign In").style.display = "";
-        document.getElementById("Sign Out Button").style.display = "none";
-        document.getElementById("App").style.display = "none";
-        document.getElementById("Quiz Home Page").style.display = "";
-        document.getElementById("Question Home Page").style.display = "none";
-        document.getElementById("Answer Home Page").style.display = "none";
+    onSignOut = () => {
+        window.location.reload();
     }
 
     render() {

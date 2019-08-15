@@ -7,15 +7,16 @@ class AnswerHomePage extends Component {
         this.state = {
             quiz: null,
             question: null,
+            permissions: null,
             answerList: null,
             answers: []
         }
     }
 
     componentDidMount = () => {
-        this.setState({ quiz: this.props.quiz, question: this.props.question }, () => {
+        this.setState({ quiz: this.props.quiz, question: this.props.question, permissions: this.props.permissions }, () => {
             setTimeout(() => { this.getAnswerList() })
-        } );
+        });
     }
 
     getAnswerList = () => {
@@ -52,10 +53,13 @@ class AnswerHomePage extends Component {
                 )
             });
         }
-        answers.push(<div key={answerList.length} className="button-entry button-list add-button">
-            <label>+</label>
-            <button type="button" className="button-list add-button button-title">Add Answer</button>
-        </div>);
+        if (this.state.permissions === 'edit') {
+            answers.push(<div key={answerList.length} className="button-entry button-list add-button">
+                <label>+</label>
+                <button type="button" className="button-list add-button button-title">Add Answer</button>
+            </div>);
+        }
+        console.log(this.state);
         this.setState({ answers });
     }
 

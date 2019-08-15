@@ -52,14 +52,17 @@ class QuestionHomePage extends Component {
                 )
             });
         }
-        questions.push(<div key={questionList.length} className="button-entry button-list add-button">
-            <label>+</label>
-            <button type="button" className="button-list add-button button-title">Add Question</button>
-        </div>);
+        if (this.state.permissions === 'edit') {
+            questions.push(<div key={questionList.length} className="button-entry button-list add-button">
+                <label>+</label>
+                <button type="button" className="button-list add-button button-title">Add Question</button>
+            </div>);
+        }
         this.setState({ questions });
     }
 
     onQuestionClick = selectedQuestion => {
+        console.log(this.state);
         if (this.state.permissions === 'edit' || this.state.permissions === 'view') {
             this.setState({ selectedQuestion });
             document.getElementById("Question List").style.display = "none";
@@ -84,7 +87,7 @@ class QuestionHomePage extends Component {
                 </div>
                 <div id="Answer Home Page" style={{ display: "none" }}>
                     {this.state.selectedQuestion &&
-                        <AnswerHomePage quiz={this.state.quiz} question={this.state.selectedQuestion} />
+                        <AnswerHomePage quiz={this.state.quiz} question={this.state.selectedQuestion} permissions={this.state.permissions}/>
                     }
                 </div>
             </div>

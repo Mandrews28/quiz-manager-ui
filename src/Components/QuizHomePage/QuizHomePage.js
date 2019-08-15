@@ -7,13 +7,16 @@ class QuizHomePage extends Component {
 
         this.state = {
             quizList: null,
+            permissions: null,
             quizzes: [],
             selectedQuiz: null
         }
     }
 
     componentDidMount() {
-        this.getQuizList();
+        this.setState({ permissions: this.props.permissions }, () => {
+            setTimeout(() => { this.getQuizList() })
+        });
     }
 
     getQuizList = () => {
@@ -41,10 +44,12 @@ class QuizHomePage extends Component {
                 )
             });
         }
-        quizzes.push(<div key={quizList.length} className="button-entry button-list add-button">
-            <label>+</label>
-            <button type="button" className="button-list add-button button-title">Create Quiz</button>
-        </div>);
+        if (this.state.permissions === 'edit') {
+            quizzes.push(<div key={quizList.length} className="button-entry button-list add-button">
+                <label>+</label>
+                <button type="button" className="button-list add-button button-title">Create Quiz</button>
+            </div>);
+        }
         this.setState({ quizzes });
     }
 
@@ -67,7 +72,7 @@ class QuizHomePage extends Component {
                 </div>
                 <div id="Question Home Page" style={{ display: "none" }}>
                     {this.state.selectedQuiz &&
-                        <QuestionHomePage quiz={this.state.selectedQuiz} permissions={this.props.permissions}/>
+                        <QuestionHomePage quiz={this.state.selectedQuiz} permissions={this.state.permissions} />
                     }
                 </div>
             </div>
