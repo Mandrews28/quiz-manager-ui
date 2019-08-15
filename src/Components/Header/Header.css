@@ -1,8 +1,4 @@
-.SignIn {
-    text-align: center;
-}
-
-.App-header {
+.Header {
     background-color: #282c34;
     min-height: 3em;
     display: flex;
@@ -15,23 +11,11 @@
     font-size: 24px;
 }
 
-.title {
-    color: #333;
-    margin-bottom: 2%;
-    font-size: 20px;
-}
-
-.SignInForm {
-    width: 220px;
-    align-items: center;
-    margin: auto;
-}
-
-.input-field {
-    margin: auto;
+.signout-button {
     text-align: right;
-}
-
-.input-submit {
-    margin-top: 0.5%;
+    position: absolute;
+    right: 0;
+    font-size: 20px;
+    margin-top: 4px;
+    margin-right: 2%;
 }

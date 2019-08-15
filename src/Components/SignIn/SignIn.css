@@ -1,0 +1,18 @@
+.SignIn {
+    text-align: center;
+}
+
+.SignInForm {
+    width: 220px;
+    align-items: center;
+    margin: auto;
+}
+
+.signin-input-field {
+    margin: auto;
+    text-align: right;
+}
+
+.signin-input-submit {
+    margin-top: 0.5%;
+}
