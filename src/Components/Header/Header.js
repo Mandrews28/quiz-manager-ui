@@ -6,7 +6,10 @@ class Header extends Component {
         event.preventDefault();
         document.getElementById("App Sign In").style.display = "";
         document.getElementById("Sign Out Button").style.display = "none";
-        document.getElementById("QuizHomePage").style.display = "none";
+        document.getElementById("App").style.display = "none";
+        document.getElementById("Quiz Home Page").style.display = "";
+        document.getElementById("Question Home Page").style.display = "none";
+        document.getElementById("Answer Home Page").style.display = "none";
     }
 
     render() {

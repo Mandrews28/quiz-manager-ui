@@ -1,9 +1,50 @@
 .Home {
-	text-align: center;
+    text-align: center;
 }
 
 .title {
     color: #333;
     margin-bottom: 2%;
     font-size: 20px;
+}
+
+.subtitle {
+    margin-bottom: 2%;
+    font-weight: 600;
+}
+
+.button-entry {
+    font-size: 30px;
+    border: 1px solid;
+    margin: 5px 10%;
+}
+
+.button-list {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    outline: none;
+}
+
+.button-title {
+    font-size: 30px;
+    border: none;
+    padding-left: 20px;
+    width: 85%;
+    text-align: left;
+    color: black;
+}
+
+.list-entry {
+    background-color: #D0DEE7;
+}
+
+.list-entry:hover {
+    background-color: #99CBED;
+}
+
+.add-button {
+    background-color: #CDECC2;
+}
+
+.add-button:hover {
+    background-color: #84F55C;
 }
