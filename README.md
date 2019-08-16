@@ -1,3 +1,19 @@
+# Quiz Manager (Front End)
+To load the WebbiSkools Quiz Manager, you need to set up both the Front-End (FE) and the Back-End (BE).
+This is the FE repository, the BE is available at https://github.com/Mandrews28/quiz-manager.
+You should start the BE application before starting the FE application.
+
+## Running the application
+If you don't have npm configured, get the latest version from here: https://www.npmjs.com/.
+To start the FE, go to the command line and run:
+
+- ```npm i```
+- ```npm start```
+
+The FE is run on localhost:3000 and this should load automatically once you run the start command.
+With both the BE and FE running, you should now be able to see the WebbiSkools Quiz Manager application.
+
+# Create React App README information
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
