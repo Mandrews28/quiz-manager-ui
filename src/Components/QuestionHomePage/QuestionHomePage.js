@@ -4,6 +4,7 @@ import tick from '../../images/tick.png';
 import cross from '../../images/cross.png';
 import editIcon from '../../images/editIcon.png';
 import deleteIcon from '../../images/deleteIcon.png';
+import AddQuestionButton from '../Buttons/AddQuestionButton';
 
 class QuestionHomePage extends Component {
     constructor() {
@@ -53,7 +54,7 @@ class QuestionHomePage extends Component {
             });
         }
         if (this.state.permissions === 'edit') {
-            questions.push(this.addQuestionDiv());
+            questions.push(<AddQuestionButton key="add-question" onQuestionSubmit={this.postNewQuestion} questions={this.state.questions}/>);
         }
         this.setState({ questions });
     }
@@ -72,15 +73,6 @@ class QuestionHomePage extends Component {
                 {this.state.permissions !== 'edit' &&
                     <span className="span-filler" />
                 }
-            </div>
-        )
-    }
-
-    addQuestionDiv = () => {
-        return (
-            <div key="add-question" className="button-entry button-list add-button">
-                <label>+</label>
-                <button type="button" className="button-list add-button button-title" onClick={this.onAddQuestionClick}>Add Question</button>
             </div>
         )
     }
@@ -171,26 +163,6 @@ class QuestionHomePage extends Component {
         } else {
             alert("Please submit a question");
         }
-    }
-
-    onAddQuestionClick = () => {
-        let questions = this.state.questions;
-        questions.pop(); //Removes Add Question div
-        let newQuestionForm = <form key={questions.length} className="button-entry button-list add-button" onSubmit={this.postNewQuestion}>
-            <input type="number" className="input-order button-list" min="1" max={questions.length + 1} defaultValue={questions.length + 1} placeholder="Q" />
-            <input type="text" className="button-list add-button button-title edit-button-title" placeholder="Add your question here" />
-            <img src={cross} className="cross edit-button" alt="cross" onClick={this.removeAddQuestionForm} />
-            <input type="image" src={tick} className="tick edit-button" alt="tick" />
-        </form>
-        questions.push(newQuestionForm);
-        this.setState({ questions });
-    }
-
-    removeAddQuestionForm = () => {
-        let questions = this.state.questions;
-        questions.pop(); //Removes Add Question form
-        questions.push(this.addQuestionDiv());
-        this.setState({ questions });
     }
 
     postNewQuestion = async (event) => {

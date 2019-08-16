@@ -4,6 +4,7 @@ import tick from '../../images/tick.png';
 import cross from '../../images/cross.png';
 import editIcon from '../../images/editIcon.png';
 import deleteIcon from '../../images/deleteIcon.png';
+import AddAnswerButton from '../Buttons/AddAnswerButton';
 
 class AnswerHomePage extends Component {
     constructor() {
@@ -55,7 +56,7 @@ class AnswerHomePage extends Component {
             });
         }
         if (this.state.permissions === 'edit') {
-            answers.push(this.addAnswerDiv());
+            answers.push(<AddAnswerButton key="add-question" onAnswerSubmit={this.postNewAnswer} answers={this.state.answers}/>);
         }
         this.setState({ answers });
     }
@@ -74,15 +75,6 @@ class AnswerHomePage extends Component {
                 {this.state.permissions !== 'edit' &&
                     <span className="span-filler" />
                 }
-            </div>
-        )
-    }
-
-    addAnswerDiv = () => {
-        return (
-            <div key="add-answer" className="button-entry button-list add-button">
-                <label>+</label>
-                <button type="button" className="button-list add-button button-title" onClick={this.onAddAnswerClick}>Add Answer</button>
             </div>
         )
     }
@@ -168,27 +160,6 @@ class AnswerHomePage extends Component {
             alert("Please submit an answer");
         }
     }
-
-    onAddAnswerClick = () => {
-        let answers = this.state.answers;
-        answers.pop(); //Removes Add Answer div
-        let newAnswerForm = <form key={answers.length} className="button-entry button-list add-button" onSubmit={this.postNewAnswer}>
-            <input type="number" className="input-order button-list" min="1" max={answers.length + 1} defaultValue={answers.length + 1} placeholder="A" />
-            <input type="text" className="button-list add-button button-title edit-button-title" placeholder="Add your answer here" />
-            <img src={cross} className="cross edit-button" alt="cross" onClick={this.removeAddAnswerForm} />
-            <input type="image" src={tick} className="tick edit-button" alt="tick" />
-        </form>
-        answers.push(newAnswerForm);
-        this.setState({ answers });
-    }
-
-    removeAddAnswerForm = () => {
-        let answers = this.state.answers;
-        answers.pop(); //Removes Add Answer form
-        answers.push(this.addAnswerDiv());
-        this.setState({ answers });
-    }
-
 
     postNewAnswer = async (event) => {
         event.preventDefault();

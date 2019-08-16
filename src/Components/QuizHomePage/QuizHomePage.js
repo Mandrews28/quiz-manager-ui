@@ -4,6 +4,7 @@ import tick from '../../images/tick.png';
 import cross from '../../images/cross.png';
 import editIcon from '../../images/editIcon.png';
 import deleteIcon from '../../images/deleteIcon.png';
+import CreateQuizButton from '../Buttons/CreateQuizButton';
 
 class QuizHomePage extends Component {
     constructor() {
@@ -45,7 +46,7 @@ class QuizHomePage extends Component {
             });
         }
         if (this.state.permissions === 'edit') {
-            quizzes.push(this.addQuizDiv());
+            quizzes.push(<CreateQuizButton key="add-quiz" onQuizSubmit={this.postNewQuiz} quizzes={this.state.quizzes}/>);
         }
         this.setState({ quizzes });
     }
@@ -64,15 +65,6 @@ class QuizHomePage extends Component {
                 {this.state.permissions !== 'edit' &&
                     <span className="span-filler" />
                 }
-            </div>
-        )
-    }
-
-    addQuizDiv = () => {
-        return (
-            <div key="add-quiz" className="button-entry button-list add-button">
-                <label>+</label>
-                <button type="button" className="button-list add-button button-title add-button-title" onClick={this.onAddQuizClick}>Create Quiz</button>
             </div>
         )
     }
@@ -160,8 +152,37 @@ class QuizHomePage extends Component {
         }
     }
 
-    onAddQuizClick = () => {
+    postNewQuiz = async (event) => {
+        event.preventDefault();
+        let quizOrder = event.target[0].value;
+        let quizText = event.target[1].value;
 
+        if (quizOrder && quizText) {
+            const payload = {
+                title: quizText
+            };
+            let url = 'http://localhost:8080/quiz/quiz' + quizOrder;
+
+            const response = await fetch(url, {
+                method: 'post',
+                body: JSON.stringify(payload),
+                headers: {
+                    'content-type': 'application/json',
+                }
+            }).catch((e) => {
+                console.log(e);
+            });
+            await response.json().then(quizList => {
+                if (response.status === 200) {
+                    this.setState({ quizList, quizzes: [] });
+                    this.createListOfQuizButtons();
+                } else {
+                    alert(quizList.message);
+                }
+            });
+        } else {
+            alert("Please submit quiz title and a number for quiz order");
+        }
     }
 
     render() {

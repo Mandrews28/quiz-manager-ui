@@ -81,21 +81,21 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 .tick {
-    width: 5%;
+    width: 25px;
 }
 
 .cross {
-    width: 4%;
+    width: 20px;
 }
 
 .edit {
-    width: 4%;
+    width: 20px;
 }
 
 .delete {
-    width: 4%;
+    width: 20px;
 }
 
 .span-filler {
-    padding-right: 8%;
+    padding-right: 40px;
 }
