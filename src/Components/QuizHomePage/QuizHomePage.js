@@ -14,7 +14,8 @@ class QuizHomePage extends Component {
             permissions: null,
             quizList: null,
             quizzes: [],
-            selectedQuiz: null
+            selectedQuiz: null,
+            isCreatingQuiz: false
         }
     }
 
@@ -185,6 +186,18 @@ class QuizHomePage extends Component {
         }
     }
 
+    // onCreateQuizClick = () => {
+    //     this.setState({ isCreatingQuiz: true });
+    //     document.getElementById("Quiz Home Page").style.display = "none";
+    //     document.getElementById("Create Quiz Form").style.display = "";
+    // }
+
+    // turnCreateQuizFormOff = () => {
+    //     this.setState({ isCreatingQuiz: false });
+    //     document.getElementById("Create Quiz Form").style.display = "none";
+    //     document.getElementById("Quiz Home Page").style.display = "";
+    // }
+
     render() {
         return (
             <div>
@@ -196,6 +209,11 @@ class QuizHomePage extends Component {
                         {this.state.quizzes}
                     </div>
                 </div>
+                 {/* <div id="Create Quiz Form" style={{ display: "none" }}>
+                    {this.state.isCreatingQuiz &&
+                        <CreateQuizForm onFormClosed={this.turnCreateQuizFormOff} />
+                    }
+                </div> */}
                 <div id="Question Home Page" style={{ display: "none" }}>
                     {this.state.selectedQuiz &&
                         <QuestionHomePage quiz={this.state.selectedQuiz} permissions={this.state.permissions} />
