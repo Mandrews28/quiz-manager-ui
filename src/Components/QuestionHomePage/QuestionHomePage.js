@@ -60,7 +60,7 @@ class QuestionHomePage extends Component {
         return (
             <div key={i} className="button-entry button-list list-entry">
                 <label>{question.order}.</label>
-                <button type="button" className="button-list list-entry button-title" onClick={(() => { this.onQuestionClick(question) })}>{question.value}</button>
+                <button type="button" className="button-list list-entry button-title list-entry-title" onClick={(() => { this.onQuestionClick(question) })}>{question.value}</button>
             </div>
         )
     }

@@ -63,7 +63,7 @@ class AnswerHomePage extends Component {
         return (
             <div key={i} className="button-entry button-list list-entry">
                 <label>{answer.order}.</label>
-                <button type="button" className="button-list list-entry button-title">{answer.value}</button>
+                <button type="button" className="button-list list-entry button-title list-entry-title">{answer.value}</button>
             </div>
         )
     }
@@ -133,7 +133,6 @@ class AnswerHomePage extends Component {
         }
     }
 
-
     render() {
         return (
             <div>
@@ -148,7 +147,11 @@ class AnswerHomePage extends Component {
                         <div>
                             {this.state.answers}
                         </div>
-                        <p>There must be between 3 and 5 answers for every question</p>
+                        <div>
+                            {this.state.permissions === 'edit' &&
+                                <p>There must be between 3 and 5 answers for every question</p>
+                            }
+                        </div>
                     </span>
                 }
             </div>

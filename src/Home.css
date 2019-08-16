@@ -28,7 +28,6 @@
     font-size: 22px;
     border: none;
     padding-left: 20px;
-    width: 85%;
     text-align: left;
     color: black;
 }
@@ -39,6 +38,10 @@
 
 .list-entry:hover {
     background-color: #99CBED;
+}
+
+.list-entry-title {
+    width: 80%;
 }
 
 .add-button {
@@ -83,4 +86,16 @@ input[type=number]::-webkit-outer-spin-button {
 
 .cross {
     width: 4%;
+}
+
+.edit {
+    width: 4%;
+}
+
+.delete {
+    width: 4%;
+}
+
+.span-filler {
+    padding-right: 8%;
 }
