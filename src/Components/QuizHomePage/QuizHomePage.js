@@ -57,8 +57,8 @@ class QuizHomePage extends Component {
                 <button type="button" className="button-list list-entry button-title list-entry-title" onClick={(() => { this.onQuizClick(quiz) })}>{quiz.title}</button>
                 {this.state.permissions === 'edit' &&
                     <span>
-                        <input type="image" src={deleteIcon} className="delete edit-button" alt="delete" onClick={(() => { this.onDeleteQuizClick(quiz, i) })} />
-                        <input type="image" src={editIcon} className="edit edit-button" alt="edit" onClick={(() => { this.onEditQuizTextClick(quiz, i) })} />
+                        <input type="image" src={deleteIcon} className="delete edit-button" alt="delete" onClick={(() => { this.onDeleteClick(quiz) })} />
+                        <input type="image" src={editIcon} className="edit edit-button" alt="edit" onClick={(() => { this.onEditTextClick(quiz, i) })} />
                     </span>
                 }
                 {this.state.permissions !== 'edit' &&
@@ -83,7 +83,7 @@ class QuizHomePage extends Component {
         document.getElementById("Question Home Page").style.display = "";
     }
 
-    onDeleteQuizClick = (quiz, index) => {
+    onDeleteClick = (quiz) => {
         let result = window.confirm("Are you sure you want to delete quiz " + quiz.order + ": " + quiz.title);
         if (result) {
             this.sendDeleteRequest(quiz);
@@ -108,13 +108,13 @@ class QuizHomePage extends Component {
         });
     }
 
-    onEditQuizTextClick = (quiz, index) => {
+    onEditTextClick = (quiz, index) => {
         let quizzes = this.state.quizzes;
         let oldQuizDiv = quizzes[index];
 
         let editForm = <form key={index} className="button-entry button-list list-entry" onSubmit={((event) => { this.postEditedText(event, quiz) })}>
             <label>{quiz.order}.</label>
-            <input type="text" className="button-list list-entry button-title edit-button-title" defaultValue={quiz.title} placeholder="Add your question here" />
+            <input type="text" className="button-list list-entry button-title edit-button-title" defaultValue={quiz.title} placeholder="Add your quiz title here" />
             <img src={cross} className="cross edit-button" alt="cross" onClick={(() => { this.removeEditForm(oldQuizDiv, index) })} />
             <input type="image" src={tick} className="tick edit-button" alt="tick" />
         </form>
